@@ -1,0 +1,90 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+  }
+  
+  .container {
+    text-align: center;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .game-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0;
+    font-size: 1.2em;
+  }
+  
+  .game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    margin: 20px auto;
+    max-width: 400px;
+  }
+  
+  .cell {
+    width: 80px;
+    height: 80px;
+    background-color: #8B4513;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .gnome {
+    width: 60px;
+    height: 60px;
+    transition: transform 0.2s;
+  }
+  
+  .gnome.active {
+    transform: scale(1.1);
+  }
+  
+  #startButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #startButton:hover {
+    background-color: #45a049;
+  }
+
+  .misses-count {
+    transition: all 0.3s;
+  }
+  
+  .misses-warning {
+    color: #ff0000 !important;
+    font-weight: bold !important;
+    animation: blink 0.5s infinite alternate;
+  }
+  
+  @keyframes blink {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+  }
+  
+  
+  .game-over {
+    pointer-events: none;
+    opacity: 0.7;
+  }
