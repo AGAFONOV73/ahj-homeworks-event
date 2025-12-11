@@ -4,6 +4,11 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -25,6 +30,21 @@ jobs:
       
     - name: Build
       run: yarn build
+
+    - name: List files after build
+      run: ls -la
+      
+    - name: Check build directory
+      run: |
+        echo "Checking for dist folder..."
+        if [ -d "./dist" ]; then
+          echo "✓ dist folder exists"
+          ls -la ./dist
+        else
+          echo "✗ dist folder NOT found"
+          echo "Looking for other build folders..."
+          find . -type d -name "build*" -o -name "public*" -o -name "out*" | head -10
+        fi  
       
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3
